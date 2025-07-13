@@ -16,15 +16,7 @@ import { RouterModule } from '@angular/router';
 export class Sidebar {
   public user: { displayName?: string; email?: string } | null = null;
 
-  onSearch(event: Event): void {
-    const target = event.target as HTMLInputElement;
-    const searchValue = target?.value || '';
-    console.log('Search value:', searchValue);
-    // Add your search logic here
-  }
+ 
 
-  onClose(): void {
-    console.log('Close button clicked');
-    // Add your close logic here
-  }
+  
 }

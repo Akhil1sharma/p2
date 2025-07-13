@@ -11,7 +11,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { RouterModule } from '@angular/router';
 import { Layout } from './layout/layout';
 import { Toolbar } from './layout/toolbar/toolbar';
 import { Sidebar } from './sidebar/sidebar';
@@ -19,7 +18,7 @@ import { TaskBoard } from './task-board/task-board';
 import { TaskList } from './task-board/task-list/task-list';
 import { TaskItem } from './task-board/task-list/task-item/task-item';
 import { AddTaskBar } from './task-board/add-task-bar/add-task-bar';
-import { ConfirmDelete} from './dialogs/confirm-delete/confirm-delete';
+
 import { DashboardRoutingModule } from './dashboard-routing-module';
 
 
@@ -29,7 +28,7 @@ import { DashboardRoutingModule } from './dashboard-routing-module';
   ],
   imports: [
     Layout,Toolbar,Sidebar, TaskBoard,
-    MatToolbarModule,TaskList, TaskItem, AddTaskBar,ConfirmDelete,
+    MatToolbarModule,TaskList, TaskItem, AddTaskBar,
     CommonModule,
     DashboardRoutingModule,
     MatIconModule,
