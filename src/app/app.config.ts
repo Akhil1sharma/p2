@@ -1,6 +1,6 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { provideHttpClient, withFetch } from '@angular/common/http'; // ✅ ADD THIS
+import { provideHttpClient, withFetch } from '@angular/common/http';
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -13,7 +13,7 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
-    provideHttpClient(withFetch()), // ✅ ADD THIS LINE
+    provideHttpClient(withFetch()),
     provideFirebaseApp(() => initializeApp({
       projectId: "task-reminder-dashboard",
       appId: "1:784866186604:web:746c734f8364662f858f49",

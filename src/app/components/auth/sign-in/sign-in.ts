@@ -11,7 +11,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
-import { HttpClient } from '@angular/common/http'; // ✅ ADD THIS
 import {
   Auth,
   GoogleAuthProvider,
@@ -39,14 +38,10 @@ export class SignIn {
 
   auth = inject(Auth);
   router = inject(Router);
-  http = inject(HttpClient); // ✅ ADD THIS
   googleAuthProvider = new GoogleAuthProvider();
 
   isSubmissionInProgress = false;
   errorMessage: string = '';
-
-  // ✅ ADD WEBHOOK URL
-  private webhookUrl = 'https://pleasant-macaw-deadly.ngrok-free.app/webhook-test/8f6008b3-6540-4045-986d-2014bdbbf594'; // Replace with actual URL
 
   constructor() {
     this.initForm();
@@ -73,18 +68,7 @@ export class SignIn {
       this.authForm.value.email!,
       this.authForm.value.password!
     )
-      .then((userCredential) => {
-        // ✅ WEBHOOK CALL FOR EMAIL LOGIN
-        const user = userCredential.user;
-        this.sendWebhookData({
-          email: user.email,
-          uid: user.uid,
-          displayName: user.displayName,
-          loginMethod: 'email',
-          timestamp: new Date().toISOString(),
-          phoneNumber: user.phoneNumber,
-        });
-
+      .then(() => {
         this.redirectToDashboardPage();
       })
       .catch((error) => {
@@ -108,42 +92,15 @@ export class SignIn {
         }
       });
   }
-
   onSignInWithGoogle() {
     signInWithPopup(this.auth, this.googleAuthProvider)
-      .then((response: any) => {
-        // ✅ WEBHOOK CALL FOR GOOGLE LOGIN
-        const user = response.user;
-        this.sendWebhookData({
-          email: user.email,
-          uid: user.uid,
-          displayName: user.displayName,
-          photoURL: user.photoURL,
-          loginMethod: 'google',
-          timestamp: new Date().toISOString(),
-          phoneNumber: user.phoneNumber,
-        });
-
-        this.redirectToDashboardPage();
-      })
-      .catch((error: any) => {
-        console.error('Google sign-in error:', error);
-        this.errorMessage = 'Google sign-in failed. Please try again.';
-      });
-  }
-
-  // ✅ WEBHOOK METHOD
-  private sendWebhookData(userData: any): void {
-    console.log('Sending webhook data:', userData);
-    
-    this.http.post(this.webhookUrl, userData).subscribe({
-      next: (response) => {
-        console.log('✅ Webhook success:', response);
-      },
-      error: (error) => {
-        console.error('❌ Webhook failed:', error);
-        // Don't show error to user, just log it
-      }
+    .then((response: any) => {
+  this.redirectToDashboardPage();
+})
+    .catch((error: any) => {
+      console.error('Google sign-in error:', error);
+      this.errorMessage = 'Google sign-in failed. Please try again.';
+      
     });
   }
 
