@@ -32,7 +32,9 @@ export class TaskBoard implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
+    
     this.loadTasks();
+    
     
     const routeSubscription = this.route.params.subscribe(params => {
       const period = params['period'] || '';
@@ -124,6 +126,7 @@ export class TaskBoard implements OnInit, OnDestroy {
 
     const taskSubscription = this.taskService.addTask(newTask).subscribe({
       next: (taskId) => {
+        
         const taskWithId = { ...newTask, id: taskId };
         const currentTasks = this.allTasksSubject.getValue();
         const updatedTasks = [...currentTasks, taskWithId];
@@ -144,19 +147,23 @@ export class TaskBoard implements OnInit, OnDestroy {
       return;
     }
 
-    const updatedTask = { ...task, completed: !task.completed };
+    
+    const allTasks = this.allTasksSubject.getValue();
+    const updatedTasks = allTasks.map(t => 
+      t.id === task.id ? { ...t, completed: !t.completed } : t
+    );
+    this.allTasksSubject.next(updatedTasks);
+    this.filterTasks(this.currentPeriod);
+
     
     const taskSubscription = this.taskService.updateTask(task.id, { completed: !task.completed }).subscribe({
       next: () => {
-        const allTasks = this.allTasksSubject.getValue();
-        const updatedTasks = allTasks.map(t => 
-          t.id === task.id ? updatedTask : t
-        );
-        this.allTasksSubject.next(updatedTasks);
-        this.filterTasks(this.currentPeriod);
+        console.log('Task updated successfully in Firebase');
       },
       error: (error) => {
         console.error('Error updating task:', error);
+        
+        this.loadTasks();
       }
     });
     
@@ -169,15 +176,21 @@ export class TaskBoard implements OnInit, OnDestroy {
       return;
     }
 
+    
+    const allTasks = this.allTasksSubject.getValue();
+    const updatedTasks = allTasks.filter(t => t.id !== task.id);
+    this.allTasksSubject.next(updatedTasks);
+    this.filterTasks(this.currentPeriod);
+
+    
     const taskSubscription = this.taskService.deleteTask(task.id).subscribe({
       next: () => {
-        const allTasks = this.allTasksSubject.getValue();
-        const updatedTasks = allTasks.filter(t => t.id !== task.id);
-        this.allTasksSubject.next(updatedTasks);
-        this.filterTasks(this.currentPeriod);
+        console.log('Task deleted successfully from Firebase');
       },
       error: (error) => {
         console.error('Error deleting task:', error);
+        
+        this.loadTasks();
       }
     });
     
@@ -194,6 +207,7 @@ export class TaskBoard implements OnInit, OnDestroy {
     if (confirmed) {
       const taskSubscription = this.taskService.clearAllTasks().subscribe({
         next: () => {
+          
           this.allTasksSubject.next([]);
           this.filterTasks(this.currentPeriod);
         },
