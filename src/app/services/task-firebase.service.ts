@@ -46,6 +46,7 @@ export class TaskFirebaseService {
       )
     );
   }
+
   addTask(task: Omit<Task, 'id'>): Observable<string> {
     const user = this.auth.currentUser;
     if (!user) {
@@ -65,6 +66,7 @@ export class TaskFirebaseService {
       map(docRef => docRef.id)
     );
   }
+
   updateTask(taskId: string, updates: Partial<Task>): Observable<void> {
     const user = this.auth.currentUser;
     if (!user) {
@@ -93,6 +95,7 @@ export class TaskFirebaseService {
     const taskDoc = doc(this.firestore, 'users', user.uid, 'tasks', taskId);
     return from(deleteDoc(taskDoc));
   }
+
   clearAllTasks(): Observable<void> {
     const user = this.auth.currentUser;
     if (!user) {
@@ -109,6 +112,7 @@ export class TaskFirebaseService {
       map(() => void 0)
     );
   }
+
   getTaskCount(): Observable<number> {
     return this.getUserTasks().pipe(
       map(tasks => tasks.length)
@@ -120,6 +124,7 @@ export class TaskFirebaseService {
       map(tasks => tasks.filter(task => task.completed).length)
     );
   }
+
   getPendingTaskCount(): Observable<number> {
     return this.getUserTasks().pipe(
       map(tasks => tasks.filter(task => !task.completed).length)

@@ -5,4 +5,5 @@ export interface Task {
   completed: boolean;
   dueDate: Date;
   createdAt: Date;
+  city:string;
 }

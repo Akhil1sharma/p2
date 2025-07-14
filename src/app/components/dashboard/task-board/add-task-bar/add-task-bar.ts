@@ -15,6 +15,7 @@ export class AddTaskBar {
 
   newTaskTitle: string = '';
   newTaskDate: string = new Date().toISOString().split('T')[0];
+  newTaskCity: string = '';
 
   get todayDate(): string {
     return new Date().toISOString().split('T')[0];
@@ -27,7 +28,8 @@ export class AddTaskBar {
         title: this.newTaskTitle.trim(),
         completed: false,
         dueDate: new Date(this.newTaskDate),
-        createdAt: new Date()
+        createdAt: new Date(),
+         city: this.newTaskCity.trim()
       };
 
       this.taskAdded.emit(newTask);
@@ -38,5 +40,6 @@ export class AddTaskBar {
   private resetForm() {
     this.newTaskTitle = '';
     this.newTaskDate = new Date().toISOString().split('T')[0];
+     this.newTaskCity = '';
   }
 }
