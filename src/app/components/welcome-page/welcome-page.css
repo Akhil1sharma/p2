@@ -1,4 +1,4 @@
-/* Reset and global styles */
+
 html, body {
   height: 100%;
   margin: 0;
@@ -7,7 +7,6 @@ html, body {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
-/* Flex utility */
 .d-flex {
   display: flex;
 }
@@ -28,12 +27,10 @@ html, body {
   text-align: center;
 }
 
-/* Full-height section */
 .vh-100 {
-  min-height: 100vh; /* Ensure background covers full height */
+  min-height: 100vh; 
 }
 
-/* Image spacing */
 .mb-4 {
   margin-bottom: 1.5rem;
 }
@@ -42,7 +39,6 @@ html, body {
   margin-top: 1.5rem;
 }
 
-/* Typography */
 h1 {
   font-size: 2.3rem;
   font-weight: bold;
@@ -60,7 +56,6 @@ p {
   margin-bottom: 1rem;
 }
 
-/* Button group container */
 div[style*="display: flex"] {
   display: flex;
   gap: 1rem;
@@ -69,7 +64,6 @@ div[style*="display: flex"] {
   justify-content: center;
 }
 
-/* Button styles */
 button[mat-raised-button] {
   padding: 12px 24px;
   border: none;
@@ -87,7 +81,6 @@ button[mat-raised-button]:hover {
   transform: translateY(-1px);
 }
 
-/* Color variants */
 button[color="accent"] {
   background-color: #ff4081;
   color: white;
@@ -106,7 +99,6 @@ button[color="primary"]:hover {
   background-color: #303f9f;
 }
 
-/* Forgot Password link */
 .text-primary {
   color: #3f51b5;
   text-decoration: none;
@@ -122,7 +114,6 @@ button[color="primary"]:hover {
   text-decoration: underline;
 }
 
-/* Responsive styling */
 @media (max-width: 768px) {
   h1 {
     font-size: 2rem;
@@ -143,13 +134,11 @@ button[color="primary"]:hover {
   }
 }
 
-/* Gradient background container */
 .d-flex.justify-content-center.align-items-center.vh-100 {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;
 }
 
-/* Card content block */
 .d-flex.justify-content-center.align-items-center.vh-100 > * {
   background: white;
   padding: 2rem;
@@ -159,7 +148,6 @@ button[color="primary"]:hover {
   width: 90%;
 }
 
-/* Optional reusable container */
 .welcome-container {
   background: white;
   padding: 2rem;

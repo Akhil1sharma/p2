@@ -1,4 +1,4 @@
-/* Base reset and full height */
+
 html, body {
   height: 100%;
   margin: 0;
@@ -8,7 +8,6 @@ html, body {
 
 }
 
-/* Flex container to center form */
 .d-flex {
   display: flex;
 }
@@ -76,12 +75,10 @@ html, body {
   font-weight: 500;
 }
 
-/* Mat field spacing fix */
 mat-form-field {
   display: block;
 }
 
-/* Icon spacing inside alert */
 .ms-2 {
   margin-left: 0.5rem;
 }
@@ -90,7 +87,6 @@ mat-form-field {
   margin-right: 0.5rem;
 }
 
-/* Forgot Password Link */
 .text-primary {
   color: #3f51b5;
   text-decoration: none;
@@ -103,7 +99,6 @@ mat-form-field {
   text-decoration: underline;
 }
 
-/* Form wrapper box */
 div[style*="width: 640px"],
 div[style*="width: 320px"] {
   background: white;
@@ -112,7 +107,6 @@ div[style*="width: 320px"] {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   div[style*="width: 320px"] {
     width: 90%;

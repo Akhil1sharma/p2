@@ -22,7 +22,6 @@ export class Toolbar {
   auth = inject(Auth);
   constructor() {
     console.log('logged in user', this.user);
-    // The user data is already resolved and available in the component
   }
   onSignOut(){
     signOut(this.auth).then(() => {

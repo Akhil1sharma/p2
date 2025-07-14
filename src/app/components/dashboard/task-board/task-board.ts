@@ -148,7 +148,6 @@ export class TaskBoard implements OnInit, OnDestroy {
     
     const taskSubscription = this.taskService.updateTask(task.id, { completed: !task.completed }).subscribe({
       next: () => {
-        // Update local state
         const allTasks = this.allTasksSubject.getValue();
         const updatedTasks = allTasks.map(t => 
           t.id === task.id ? updatedTask : t

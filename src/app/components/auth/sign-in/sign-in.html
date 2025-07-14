@@ -1,19 +1,15 @@
 <div class="d-flex justify-content-center align-items-center vh-100">
   <div style="width: 320px;" class="text-center">
 
-    <!-- Logo Centered -->
     <img src="assets/tm.png" alt="Task Reminder Logo"
          style="width: 150px; height: 150px;"
          class="mx-auto d-block mb-4 mt-3">
 
-    <!-- Title -->
     <h1 class="mb-2">Welcome to Easy Task</h1>
     <p class="mb-4">Please sign in or sign up to continue using the application.</p>
 
-    <!-- Sign-In Form -->
     <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
 
-      <!-- Email Input -->
       <mat-form-field appearance="outline" class="w-100 mb-2" color="primary">
         <mat-label>Email/Username</mat-label>
         <input matInput formControlName="email">
@@ -25,7 +21,6 @@
         </mat-error>
       </mat-form-field>
 
-      <!-- Password Input -->
       <mat-form-field appearance="outline" class="w-100 mb-2" color="primary">
         <mat-label>Password</mat-label>
         <input matInput type="password" formControlName="password">
@@ -34,30 +29,25 @@
         </mat-error>
       </mat-form-field>
 
-      <!-- Global Error Message -->
       <div *ngIf="errorMessage" class="alert alert-danger d-flex align-items-center p-2 mb-2">
         <mat-icon color="warn">error</mat-icon>
         <span class="ms-2">{{ errorMessage }}</span>
       </div>
 
-      <!-- Loading Spinner -->
       <div class="d-flex align-items-center justify-content-center mb-2" *ngIf="isSubmissionInProgress">
         <mat-spinner [diameter]="22" class="me-2"></mat-spinner>
         <span>Signing in...</span>
       </div>
 
-      <!-- Sign-In Button -->
       <button type="submit" mat-raised-button color="primary" class="w-100 mb-3 auth-button">
         Sign-In
       </button>
     </form>
 
-    <!-- Google Sign-In -->
     <button mat-raised-button class="w-100 mb-3 auth-button" (click)="onSignInWithGoogle()">
       Sign-In with Google
     </button>
 
-    <!-- Sign-Up Prompt -->
     <p class="mb-1">Don't have an account?</p>
     <button mat-raised-button color="accent"
             [routerLink]="['/auth/sign-up']"
@@ -65,7 +55,6 @@
       Sign-Up
     </button>
 
-    <!-- Forgot Password Link -->
     <a [routerLink]="['/auth/forgot-password']" class="text-primary d-block">
       Forgot Password
     </a>
