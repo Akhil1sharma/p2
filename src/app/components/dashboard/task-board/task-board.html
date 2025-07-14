@@ -25,17 +25,17 @@
 
   <div class="filter-section">
     <div class="filter-buttons">
-      <a routerLink="/tasks" class="filter-btn" [class.active]="currentPeriod === ''">
-        All Tasks
-      </a>
-      <a routerLink="/tasks/today" class="filter-btn" [class.active]="currentPeriod === 'today'">
+      <a routerLink="/my-day" class="filter-btn" [class.active]="currentPeriod === 'my-day'">
         Today
       </a>
-      <a routerLink="/tasks/week" class="filter-btn" [class.active]="currentPeriod === 'week'">
+      <a routerLink="/this-week" class="filter-btn" [class.active]="currentPeriod === 'this-week'">
         This Week
       </a>
-      <a routerLink="/tasks/month" class="filter-btn" [class.active]="currentPeriod === 'month'">
+      <a routerLink="/this-month" class="filter-btn" [class.active]="currentPeriod === 'this-month'">
         This Month
+      </a>
+      <a routerLink="/all" class="filter-btn" [class.active]="currentPeriod === 'all'">
+        All Tasks
       </a>
     </div>
     
