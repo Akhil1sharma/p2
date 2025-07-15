@@ -25,16 +25,16 @@
 
   <div class="filter-section">
     <div class="filter-buttons">
-      <a routerLink="/my-day" class="filter-btn" [class.active]="currentPeriod === 'my-day'">
+      <a routerLink="/dashboard/today" class="filter-btn" [class.active]="currentPeriod === 'today'">
         Today
       </a>
-      <a routerLink="/this-week" class="filter-btn" [class.active]="currentPeriod === 'this-week'">
+      <a routerLink="/dashboard/week" class="filter-btn" [class.active]="currentPeriod === 'week'">
         This Week
       </a>
-      <a routerLink="/this-month" class="filter-btn" [class.active]="currentPeriod === 'this-month'">
+      <a routerLink="/dashboard/month" class="filter-btn" [class.active]="currentPeriod === 'month'">
         This Month
       </a>
-      <a routerLink="/all" class="filter-btn" [class.active]="currentPeriod === 'all'">
+      <a routerLink="/dashboard/all" class="filter-btn" [class.active]="currentPeriod === 'all'">
         All Tasks
       </a>
     </div>
@@ -53,6 +53,7 @@
         <p *ngIf="currentPeriod === 'today'">You have no tasks for today.</p>
         <p *ngIf="currentPeriod === 'week'">You have no tasks for this week.</p>
         <p *ngIf="currentPeriod === 'month'">You have no tasks for this month.</p>
+        <p *ngIf="currentPeriod === 'all'">You have no tasks.</p>
         <p *ngIf="currentPeriod === '' || !currentPeriod">
           Start by adding your first task above.
         </p>
